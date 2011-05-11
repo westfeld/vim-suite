@@ -33,8 +33,9 @@ else
 endif
 if exists("$TMPDIR")
     set backupdir=$TMPDIR
+else
+    set backupdir=$HOME/tmp,/tmp,.
 endif
-set backupdir+=$HOME/tmp,/tmp,.
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
