@@ -63,6 +63,10 @@ if &t_Co > 2 || has("gui_running")
   colorscheme solarized
 endif
 
+set expandtab
+set shiftwidth=4
+set softtabstop=4
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
@@ -81,11 +85,11 @@ if has("autocmd")
     \   exe "normal g`\"" |
     \ endif
 
+  " If editing a python file, use 2 space indents instead of 4
+  autocmd FileType python set shiftwidth=2
+  autocmd FileType python set softtabstop=2
 endif " has("autocmd")
 
-set expandtab
-set shiftwidth=4
-set softtabstop=4
 set guifont=Menlo:h14
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
