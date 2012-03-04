@@ -85,9 +85,6 @@ if has("autocmd")
     \   exe "normal g`\"" |
     \ endif
 
-  " If editing a python file, use 2 space indents instead of 4
-  autocmd FileType python set shiftwidth=2
-  autocmd FileType python set softtabstop=2
 endif " has("autocmd")
 
 " OS-specific font settings
