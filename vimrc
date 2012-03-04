@@ -90,6 +90,24 @@ if has("autocmd")
   autocmd FileType python set softtabstop=2
 endif " has("autocmd")
 
-set guifont=Menlo:h14
+" OS-specific font settings
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin"
+    " MacOS X specific settings
+    " using Menlo font in a big size on MacOS X
+    set guifont = Menlo:h14
+  elseif s:uname == "Linux"
+    " Linux specific settings
+    " using DejaVu Sans Mono font on debian
+    set guifont = "DejaVu Sans Mono":h11
+elseif has("win32")
+    " Windows specific settings
+    " using Consolas font introduced on Windows Vista
+    " also part of MS Office 2007
+    set guifont = "Consolas":h11
+  endif
+endif
+
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
