@@ -89,20 +89,20 @@ endif " has("autocmd")
 
 " OS-specific font settings
 if has("unix")
-  let s:uname = system("uname")
+  let s:uname = substitute(system("uname"), "\n", "", "")
   if s:uname == "Darwin"
     " MacOS X specific settings
     " using Menlo font in a big size on MacOS X
-    set guifont = Menlo:h14
+    set guifont=Menlo:h12
   elseif s:uname == "Linux"
     " Linux specific settings
     " using DejaVu Sans Mono font on debian
-    set guifont = "DejaVu Sans Mono":h11
+    set guifont="DejaVu Sans Mono":h11
 elseif has("win32")
     " Windows specific settings
     " using Consolas font introduced on Windows Vista
     " also part of MS Office 2007
-    set guifont = "Consolas":h11
+    set guifont=Consolas:h11
   endif
 endif
 
