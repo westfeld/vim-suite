@@ -60,6 +60,9 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
   set background=dark
+"  uncomment the following line if you are not using the solarized colorscheme
+"  in the terminal
+"  let g:solarized_termcolors=256
   colorscheme solarized
 endif
 
