@@ -54,21 +54,57 @@ vnoremap p <Esc>:let current_reg = @"<CR>gvs<C-R>=current_reg<CR><Esc>
 " text is lost and it only works for putting the current register.
 "vnoremap p "_dp
 
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
-if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-  set background=dark
-"  uncomment the following line if you are not using the solarized colorscheme
-"  in the terminal
-"  let g:solarized_termcolors=256
-  colorscheme solarized
+
+if !has("gui_running")
+  let g:solarized_termcolors=256
 endif
+
+set background=dark
+let python_highlight_all=1
+syntax on
+set hlsearch
+colorscheme solarized
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 set expandtab
 set shiftwidth=4
 set softtabstop=4
+
+" PEP8 conform lines
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+" powerline support
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -96,7 +132,8 @@ if has("unix")
   if s:uname == "Darwin"
     " MacOS X specific settings
     " using Menlo font in a big size on MacOS X
-    set guifont=Menlo:h12
+"    set guifont=Menlo:h12
+    set guifont="Meslo LG S for Powerline":h12
   elseif s:uname == "Linux"
     " Linux specific settings
     " using DejaVu Sans Mono font on debian
