@@ -92,9 +92,13 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix
 
 " powerline support
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+
+" always show statusline
+set laststatus=2
+
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -135,6 +139,11 @@ elseif has("win32")
     set guifont=Consolas:h11
   endif
 endif
+
+" vim-go configuration
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
 
 nnoremap <F5> :GundoToggle<CR>
 nnoremap <F6> :NERDTreeToggle<CR>
