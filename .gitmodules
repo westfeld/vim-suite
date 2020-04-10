@@ -47,3 +47,6 @@
 [submodule "bundle/vim-virtualenv"]
 	path = bundle/vim-virtualenv
 	url = https://github.com/plytophogy/vim-virtualenv.git
+[submodule "bundle/vim-flog"]
+	path = bundle/vim-flog
+	url = https://github.com/rbong/vim-flog.git
