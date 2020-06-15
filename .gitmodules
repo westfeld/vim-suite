@@ -43,6 +43,6 @@
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline
-[submodule "/Users/towe/.vim/bundle/mundo"]
-	path = /Users/towe/.vim/bundle/mundo
+[submodule "bundle/mundo"]
+	path = bundle/mundo
 	url = https://github.com/simnalamburt/vim-mundo
